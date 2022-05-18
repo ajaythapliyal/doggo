@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html, body{
+    min-height: 100vh;
+}
+
+:root{
+    --black : #222831;
+    --grey: #393E46;
+    --teal: #00ADB5;
+    --white: #EEEEEE;
+}
+
+body{
+    background-color: var(--white);
+}
+
+header{
+    min-width: 100vw;
+    background-color: var(--teal);
+    color: var(--white);
+    /* height: 3em; */
+    font-size: 1.3rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
