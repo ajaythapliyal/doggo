@@ -58,3 +58,24 @@ input{
 input:focus, input:active{
     border-color: var(--teal);
 }
+
+
+.spinner{
+    /* border: 2px var(--teal) solid; */
+    /* background-color: var(--teal); */
+    background: linear-gradient(45deg, var(--white) 50%, var(--teal) 50%);
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    
+}
+
+.spinner-inner{
+    background-color: var(--white);
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    position: relative;
+    left: 0.75em;
+    top: 0.75em;
+}
