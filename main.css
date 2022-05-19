@@ -16,15 +16,45 @@ html, body{
 
 body{
     background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+img {
+    max-inline-size: 100%;
+    block-size: auto;
+    object-fit: cover;
 }
 
 header{
     min-width: 100vw;
     background-color: var(--teal);
     color: var(--white);
-    /* height: 3em; */
     font-size: 1.3rem;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 10px;
+}
+
+main{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1em;
+    margin-top: 3em;
+    width: 90%;
+}
+
+input{
+    margin-top: 3em;
+    width: 50%;
+    height: 2em;
+    border: 2px var(--teal) solid;
+    border-radius: 10px;
+    background-color: var(--white);
+
+}
+
+input:focus, input:active{
+    border-color: var(--teal);
 }
