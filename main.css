@@ -59,23 +59,44 @@ input:focus, input:active{
     border-color: var(--teal);
 }
 
-
 .spinner{
-    /* border: 2px var(--teal) solid; */
-    /* background-color: var(--teal); */
-    background: linear-gradient(45deg, var(--white) 50%, var(--teal) 50%);
     width: 3em;
     height: 3em;
+    background: linear-gradient(to top, var(--white) 50%, var(--teal)50%);
     border-radius: 50%;
+    animation-name: spin-animation;
+    animation-timing-function: linear;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+.inner-spinner{
+    height: 2.5em;
+    width: 2.5em;
+    background-color: var(--white);
+    border-radius: 50%;
+    position: relative;
+    top: 0.25em;
+    left : 0.25em;
+}
+
+@keyframes spin-animation {
+    0%{
+        transform: rotateZ(0deg);
+    }
+    25%{
+        transform: rotateZ(90deg);
+    }
+    50%{
+        transform: rotateZ(180deg);
+    }
+    75%{
+        transform: rotateZ(270deg);
+    }
+    100%{
+        transform: rotateZ(360deg)
+    }
     
 }
 
-.spinner-inner{
-    background-color: var(--white);
-    width: 1.5em;
-    height: 1.5em;
-    border-radius: 50%;
-    position: relative;
-    left: 0.75em;
-    top: 0.75em;
-}
+
