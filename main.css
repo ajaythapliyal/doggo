@@ -22,8 +22,8 @@ body{
 }
 
 img {
-    max-inline-size: 100%;
-    block-size: auto;
+    height: 300px;
+    width: 300px;
     object-fit: cover;
 }
 
@@ -39,7 +39,7 @@ header{
 
 main{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, 300px);
     gap: 1em;
     margin-top: 3em;
     width: 90%;
@@ -68,6 +68,8 @@ input:focus, input:active{
     animation-timing-function: linear;
     animation-duration: 1s;
     animation-iteration-count: infinite;
+    justify-self: center;
+    align-self: center;
 }
 
 .inner-spinner{

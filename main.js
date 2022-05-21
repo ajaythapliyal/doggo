@@ -1,14 +1,18 @@
 import { fetchDogs } from './dog-service.js'
 import { store } from './store.js'
+import { render } from './view.js'
 
 (function init(){
-    fetchDogs();
-    if(store.IsImageEmpty){
-        console.log("store is empty")
-    }
+    subscriptions();
+    render();
+    fetchDogs().then(dogs => store.addDogs(dogs))
 })()
 
 
-function showSpinner(){
-    
+
+/**
+ * Subscribes store to view 
+ */
+function subscriptions(){
+    store.subscribe(store.addDogs, render)
 }
