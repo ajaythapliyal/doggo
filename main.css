@@ -53,6 +53,7 @@ input{
     border: 2px var(--teal) solid;
     border-radius: 10px;
     background-color: var(--white);
+    padding-inline: 0.5em;
 
 }
 
