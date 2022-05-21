@@ -34,12 +34,13 @@ header{
     font-size: 1.3rem;
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-left: 10px;
+    padding-left: 2em;
 }
 
 main{
     display: grid;
-    grid-template-columns: repeat(auto-fit, 300px);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    justify-items: center;
     gap: 1em;
     margin-top: 3em;
     width: 90%;

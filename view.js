@@ -13,7 +13,7 @@ export function render(images){
     }
     const imageView =  images.reduce((accu, image)=>{
         return `${accu}
-        <img src=${image}>`
+        <img src=${image} loading="lazy">`
     }, "")
     
     main.innerHTML = imageView
