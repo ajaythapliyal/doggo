@@ -1,14 +1,25 @@
 export async function fetchDogs(number=50){
     try{
         let dogResponse = await fetch(`https://dog.ceo/api/breeds/image/random/${number}`)
-        let doggos = await dogResponse.json();
-        return doggos.message
+        let dogs = await dogResponse.json();
+        const images = {}
+        dogs.message.forEach(dog => {
+        const breed = dog.split('/')[4]
+        const accuImages = images[breed];
+        if(!accuImages){
+            images[breed] = [dog];
+        }
+        else{
+            images[breed].push(dog);
+        }
+        })
+        return images
     }
     catch(e){
         throw Error("Fetching dogs failed")
     }
 
-    // return new Promise((resolve, reject)=>{
+    // const dogs = await new Promise((resolve, reject)=>{
     //     setTimeout(()=>{
     //         resolve([
     //             "https://images.dog.ceo/breeds/spaniel-brittany/n02101388_5512.jpg",

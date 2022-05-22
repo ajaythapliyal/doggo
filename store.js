@@ -1,6 +1,6 @@
 class Store{
-    images = [];
-    breeds = [];
+    images = {};
+    // breeds = [];
     observers = new Map();
 
     IsImageEmpty(){
@@ -8,8 +8,15 @@ class Store{
     }
 
     addDogs(dogs){
-        this.images.push(...dogs);
-        this.observers.get(this.addDogs).forEach(observer => observer(this.images))
+        Object.entries(dogs).forEach(([breed, breedImages])=> {
+            const storedBreedImages = this.images[breed];
+            if(!storedBreedImages){
+                this.images[breed] = breedImages;
+                return
+            }
+            storedBreedImages.push(...breedImages)
+        })
+        this.observers.get(this.addDogs).forEach(observer => observer(Object.values(this.images).flat()))
     }
 
     subscribe(func, observer){
