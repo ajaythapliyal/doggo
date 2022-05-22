@@ -32,3 +32,13 @@ export async function fetchDogs(number=50){
     //     }, 3000)
     // })
 }
+
+export async function fetchBreeds(){
+    try {
+        const breedsResponse = await fetch("https://dog.ceo/api/breeds/list")
+        const breeds = await breedsResponse.json()
+        return breeds.message   
+    } catch (error) {
+        throw Error("Fetching breed failed")
+    }
+}

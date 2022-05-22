@@ -1,4 +1,4 @@
-import { fetchDogs } from './dog-service.js'
+import { fetchBreeds, fetchDogs } from './dog-service.js'
 import { store } from './store.js'
 import { render } from './view.js'
 
@@ -6,6 +6,7 @@ import { render } from './view.js'
     subscriptions();
     render();
     fetchDogs().then(dogs => store.addDogs(dogs))
+    fetchBreeds().then(breeds => store.addBreeds(breeds))
 })()
 
 
