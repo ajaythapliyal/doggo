@@ -51,7 +51,7 @@ main{
 
 input{
     margin-top: 3em;
-    width: 50%;
+    width: min(80em, 80%);
     height: 2em;
     border: 2px var(--teal) solid;
     border-radius: 10px;
