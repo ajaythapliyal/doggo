@@ -2,12 +2,12 @@ export async function fetchDogs(number=50){
     try{
         let dogResponse = await fetch(`https://dog.ceo/api/breeds/image/random/${number}`)
         let dogs = await dogResponse.json();
-        const images = []
+        const dogsNormalized = []
         dogs.message.forEach(dog => {
         const breed = dog.split('/')[4]
-        images.push({breed, dog})
+        dogsNormalized.push({breed, image : dog})
         })
-        return images
+        return dogsNormalized
     }
     catch(e){
         throw Error("Fetching dogs failed")

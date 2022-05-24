@@ -27,16 +27,16 @@ export function removeAllSpinners(){
 }
 
 
-export function render(images){
-    if (!images || images.length === 0){
+export function render(dogs){
+    if (!dogs || dogs.length === 0){
         return showSpinner()
     }
     removeAllSpinners();
-    const imageView =  images.reduce((accu, image)=>{
+    const dogImages =  dogs.reduce((accu, dog)=>{
         return `${accu}
-        <img src="${image.dog}" loading="lazy">`
+        <img src="${dog.image}" loading="lazy">`
     }, "")
-    document.querySelector("main").innerHTML = imageView;
+    document.querySelector("main").innerHTML = dogImages;
     setInfiniteScroll();
 }
 
