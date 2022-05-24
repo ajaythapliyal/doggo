@@ -34,7 +34,7 @@ export function render(images){
     removeAllSpinners();
     const imageView =  images.reduce((accu, image)=>{
         return `${accu}
-        <img src="${image}" loading="lazy">`
+        <img src="${image.dog}" loading="lazy">`
     }, "")
     document.querySelector("main").innerHTML = imageView;
     setInfiniteScroll();

@@ -1,5 +1,5 @@
 class Store{
-    images = {};
+    images = [];
     breeds = [];
     observers = new Map();
 
@@ -8,14 +8,7 @@ class Store{
     }
 
     addDogs(dogs){
-        Object.entries(dogs).forEach(([breed, breedImages])=> {
-            const storedBreedImages = this.images[breed];
-            if(!storedBreedImages){
-                this.images[breed] = breedImages;
-                return
-            }
-            storedBreedImages.push(...breedImages)
-        })
+        this.images.push(...dogs)
         this.observers.get(this.addDogs)?.forEach?.(observer => observer(Object.values(this.images).flat()))
     }
 

@@ -1,6 +1,6 @@
 import { fetchBreeds, fetchDogs } from './dog-service.js'
 import { store } from './store.js'
-import { render, setInfiniteScroll } from './view.js'
+import { render } from './view.js'
 
 (function init(){
     subscriptions();
