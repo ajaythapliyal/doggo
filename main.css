@@ -37,7 +37,7 @@ header{
 }
 
 header >span {
-    padding-left: 2em; 
+    padding-left: min(2em, 7%); 
 }
 
 main{
