@@ -14,6 +14,10 @@ class Store{
         this.observers.get(this.addDogs)?.forEach?.(observer => observer(filteredDogs))
     }
 
+    get filteredDogs(){
+        return  this.filterBreed ? this.dogs.filter(dog => dog.breed === this.filterBreed): this.dogs
+    }
+
     addBreeds(breeds){
         this.breeds.push(...breeds)
         this.observers.get(this.addBreeds)?.forEach?.(observer => observer())

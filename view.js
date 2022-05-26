@@ -11,7 +11,9 @@ export function showSpinner(){
 
 export function appendSpinner(){
     if(!body.lastElementChild.classList.contains('spinner')){
-        body.innerHTML+=getSpinner();
+        const wrapper = document.createElement('div');
+        wrapper.innerHTML = getSpinner();
+        body.appendChild(wrapper.firstElementChild);
         unsetInfiniteScroll();
     }
 }
@@ -50,7 +52,7 @@ export function filter(){
         scheduledCall = setTimeout(()=>{
             const normalizedBreed = event.target.value.trim() 
             store.filter(normalizedBreed);
-            if(store.includesBreed(normalizedBreed)){
+            if(store.includesBreed(normalizedBreed) && store.filteredDogs.length < 50){
                 fetchDogs(normalizedBreed)
             .then(dogs => store.addDogs(dogs))
             }
