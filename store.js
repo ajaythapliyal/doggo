@@ -1,20 +1,33 @@
 class Store{
-    images = [];
+    dogs = [];
     breeds = [];
+    filterBreed = undefined
     observers = new Map();
 
     IsImageEmpty(){
-        return this.images.length === 0
+        return this.dogs.length === 0
     }
 
     addDogs(dogs){
-        this.images.push(...dogs)
-        this.observers.get(this.addDogs)?.forEach?.(observer => observer(Object.values(this.images).flat()))
+        this.dogs.push(...dogs)
+        const filteredDogs = this.filterBreed ? this.dogs.filter(dog => dog.breed === this.filterBreed): this.dogs
+        this.observers.get(this.addDogs)?.forEach?.(observer => observer(filteredDogs))
     }
 
     addBreeds(breeds){
         this.breeds.push(...breeds)
         this.observers.get(this.addBreeds)?.forEach?.(observer => observer())
+    }
+
+    filter(filterBreed){
+        this.filterBreed = filterBreed?.length ? filterBreed: undefined
+        const filteredDogs = this.filterBreed ? this.dogs.filter(dog => dog.breed === this.filterBreed):this.dogs
+        this.observers.get(this.filter)?.forEach?.(observer => observer(filteredDogs))
+        
+    }
+
+    includesBreed(breed){
+        return Boolean(this.breeds.includes(breed))
     }
 
     subscribe(func, observer){

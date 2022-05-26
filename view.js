@@ -3,6 +3,7 @@ import { store } from "./store.js";
 
 const main = document.querySelector("main");
 const body = document.querySelector("body");
+const input = document.querySelector("input");
 
 export function showSpinner(){
    main.innerHTML = getSpinner();
@@ -40,6 +41,23 @@ export function render(dogs){
     setInfiniteScroll();
 }
 
+export function filter(){
+    let scheduledCall;
+    return function debouncedFilter(event){
+        if(scheduledCall){
+            clearTimeout(scheduledCall)
+        }
+        scheduledCall = setTimeout(()=>{
+            const normalizedBreed = event.target.value.trim() 
+            store.filter(normalizedBreed);
+            if(store.includesBreed(normalizedBreed)){
+                fetchDogs(normalizedBreed)
+            .then(dogs => store.addDogs(dogs))
+            }
+        }, 2000);
+    }
+}
+
 
 export function setInfiniteScroll(){
     window.addEventListener('scroll', infiniteScroll)
@@ -47,6 +65,10 @@ export function setInfiniteScroll(){
 
 export function unsetInfiniteScroll(){
     window.removeEventListener('scroll', infiniteScroll)
+}
+
+export function setFilterHandler(){
+    input.addEventListener('keyup', filter())
 }
 
 
@@ -59,6 +81,6 @@ function infiniteScroll(){
     const bottomToScroll = scrollHeight - (window.pageYOffset+document.documentElement.clientHeight)
         if (bottomToScroll < 100){
             appendSpinner()
-            fetchDogs().then(dogs => store.addDogs(dogs));
+            fetchDogs(store.filterBreed).then(dogs => store.addDogs(dogs));
         }
 }
