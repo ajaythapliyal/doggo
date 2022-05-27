@@ -50,7 +50,7 @@ export function filter(){
             clearTimeout(scheduledCall)
         }
         scheduledCall = setTimeout(()=>{
-            const normalizedBreed = event.target.value.trim() 
+            const normalizedBreed = event.target.value.trim().toLowerCase() 
             store.filter(normalizedBreed);
             if(store.includesBreed(normalizedBreed) && store.filteredDogs.length < 50){
                 fetchDogs(normalizedBreed)
