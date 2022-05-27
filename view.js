@@ -56,7 +56,7 @@ export function filter(){
                 fetchDogs(normalizedBreed)
             .then(dogs => store.addDogs(dogs))
             }
-        }, 2000);
+        }, 500);
     }
 }
 
